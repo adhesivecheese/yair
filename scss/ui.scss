@@ -1,0 +1,1064 @@
+@import "colors";
+
+%activeLink {
+	color: $link;
+	font-weight: bold;
+}
+%clipOverflow {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+@mixin headerPanel {
+	position: sticky;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 53px;
+	box-sizing: border-box;
+	background-color: $white;
+	border-bottom: 1px solid $border;
+	padding: 8px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+/* Modify reddit elements */
+#classy-error,
+.footer-parent,
+.pagename,
+.debuginfo,
+#hsts_pixel {
+	display: none;
+}
+.content {
+	min-height: calc(100vh - 65px);
+	margin: 0 !important;
+}
+.md {
+	max-width: unset !important;
+}
+.author-tooltip__head {
+    padding: 8px !important;
+    background-color: unset !important;
+    border: unset !important;
+	.author-tooltip__credentials-list {
+		margin-top: 0 !important;
+	}
+}
+.author-tooltip__profile-link,
+.author-tooltip__link-list,
+.author-tooltip__avatar,
+.author-tooltip__title {
+    display: none !important;
+}
+
+
+/* Set YAIR defaults */
+.yair-content,
+.yair-body,
+.yair-sidebar-panel,
+.yair-main-panel {
+	min-height: inherit;
+}
+
+.yair-content {
+	font-size: 1.2em;
+}
+
+.yair-hide {
+	display: none !important;
+}
+
+.yair-body {
+	display: flex;
+}
+
+
+/* hide elements depending on page */
+.yair-show-inbox,
+.yair-show-saved,
+.yair-show-modmail,
+.yair-show-modsaved {
+	#YAIRBulkRestore,
+	.icon-restore {
+		display: none;
+	}
+}
+.yair-show-archived,
+.yair-show-modarchived {
+	#YAIRBulkDelete,
+	.yair-message-row .icon-archive {
+		display: none;
+	}
+}
+.yair-show-conversation {
+	.yair-main-panel .yair-header-panel {
+		display: none;
+	}
+}
+
+/* Icons */
+.icon {
+	height: 17px;
+	width: 17px;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/sprites.png");
+	background-repeat: no-repeat;
+	border: none;
+	display: inline-block;
+	float: left;
+	margin-right: 10px;
+	cursor: pointer;
+	&.msg-icon {
+		background-position: 0 -34px;
+		&:hover {
+			background-position: 0 -51px;
+		}
+	}
+	&.icon-inbox,
+	&.icon-markUnread {
+		background-position: 0 -68px;
+	}
+	&.icon-drafts {
+		background-position: 0 -102px;
+	}
+	&.icon-saved {
+		background-position: 0 -170px;
+	}
+	&.icon-archive {
+		background-position: 0 -136px;
+	}
+	&.icon-restore {
+		background-position: 0 -272px;
+	}
+	&.icon-markRead {
+		background-position: 0 -255px;
+	}
+	&.icon-config {
+		margin-left: 0;
+		background-position: 0 -17px;
+	}
+	&.yair-save-toggle {
+		background-position: 0 -204px;
+		&.yair-saved {
+			background-position: 0 -187px;
+		}
+	}
+	&.icon-modmail {
+		background-position: 0 -357px;
+	}
+	&.icon-export {
+		background-position: 0 -391px;
+	}
+}
+
+/* Checkboxes */
+.styled-checkbox {
+	opacity: 0;
+	position: absolute;
+	+ label {
+		cursor: pointer;
+		padding: 0;
+		position: relative;
+	}
+	+ label:before {
+		height: 17px;
+		width: 17px;
+		background: url("chrome-extension://__MSG_@@extension_id__/images/sprites.png");
+		background-position: 0 -221px;
+		content: '';
+		display: inline-block;
+		margin-right: 10px;
+		vertical-align: text-top;
+	}
+	&:checked + label:before {
+		background-position: 0 -238px;
+	}
+}
+
+//Firefox Hack
+@media screen and (min--moz-device-pixel-ratio:0) {
+	.icon, .styled-checkbox + label:before {
+		background: url("moz-extension://__MSG_@@extension_id__/images/sprites.png");
+	}
+	.styled-checkbox + label:before {
+		background-position: 0 -221px;
+	}
+}
+
+/*****************
+*     Sidebar    *
+*****************/
+.yair-show-inbox {
+	.inbox .icon-inbox {
+		background-position: 0 -85px;
+	}
+	.inbox .yair-inbox .title {
+		@extend %activeLink;
+	}
+}
+.yair-show-drafts {
+	.inbox .icon-drafts {
+		background-position: 0 -119px;
+	}
+	.inbox .yair-drafts .title {
+		@extend %activeLink;
+	}
+}
+.yair-show-saved {
+	.inbox .icon-saved {
+		background-position: 0 -187px;
+	}
+	.inbox .yair-saved .title {
+		@extend %activeLink;
+	}
+}
+.yair-show-archived {
+	.inbox .icon-archive {
+		background-position: 0 -153px;
+	}
+	.inbox .yair-archived .title {
+		@extend %activeLink;
+	}
+}
+.yair-show-modmail {
+	.icon-modmail {
+		background-position: 0 -374px;
+	}
+	.modmail-inbox .title {
+		@extend %activeLink;
+	}
+}
+.yair-show-moddrafts {
+	.modmail .icon-drafts {
+		background-position: 0 -119px;
+	}
+	.modmail .yair-drafts .title {
+		@extend %activeLink;
+	}
+}
+.yair-show-modsaved {
+	.modmail .icon-saved {
+		background-position: 0 -187px;
+	}
+	.modmail .yair-saved .title {
+		@extend %activeLink;
+	}
+}
+.yair-show-modarchived {
+	.modmail .icon-archive {
+		background-position: 0 -153px;
+	}
+	.modmail .yair-archived .title {
+		@extend %activeLink;
+	}
+}
+
+.yair-sidebar-panel {
+	min-width: 250px;
+	border-right: 1px solid $border;
+	.yair-sidebar-menu {
+		position: sticky;
+		top: 0;
+		.yair-sidebar-title {
+			display: flex;
+			justify-content: space-between;
+			border-bottom: 1px solid $border;
+			height: 36px;
+			align-items: center;
+			padding: 8px 16px;
+			.title-message {
+				font-size: 22px;
+				font-weight: bold;
+				a {
+					color: $text-light;
+					cursor: pointer;
+				}
+			}
+			.msg-icon {
+				margin-right: 0;
+			}
+		}
+		.yair-sidebar-nav {
+			margin: 16px;
+			border-bottom: 1px solid $border;
+			.nav-item {
+				cursor: pointer;
+				margin-bottom: 16px;
+				color:$text-light;
+				.title {
+					margin-bottom: 16px;
+				}
+				&:hover {
+					color: $link;
+					font-weight: bold;
+				}
+				&:hover .icon-inbox {
+					background-position: 0 -85px;
+				}
+				&:hover .icon-drafts {
+					background-position: 0 -119px;
+				}
+				&:hover .icon-saved {
+					background-position: 0 -187px;
+				}
+				&:hover .icon-archive {
+					background-position: 0 -153px;
+				}
+				&:hover .icon-modmail {
+					background-position: 0 -374px;
+				}
+			}
+		}
+		.yair-sidebar-label {
+			height: 30px;
+			text-align: center;
+			color: $text-light;
+			cursor: default;
+		}
+		.yair-sidebar-options {
+			margin: 16px;
+			border-bottom: 1px solid $border;
+			.options-item {
+				cursor: pointer;
+				margin-bottom: 16px;
+				color:$text-light;
+			}
+		}
+	}
+	.yair-sidebar-footer {
+		position: fixed;
+		bottom: 0;
+		padding: 16px;
+		border-top: 1px solid $border;
+		width: 218px;
+		#YAIRShowConfig {
+			cursor: pointer;
+			color: $text-light;
+		}
+	}
+}
+
+/*****************
+*      Inbox     *
+*****************/
+.yair-main-panel {
+	min-width: 350px;
+	width: calc(100% - 250px);
+	background-color: $border;
+	.yair-header-panel {
+		@include headerPanel;
+		.yair-search-panel {
+			border-radius: 4px;
+			border: 1px solid $border;
+			box-sizing: border-box;
+			display: flex;
+			height: 36px;
+			overflow: hidden;
+			width: -webkit-fill-available;
+			width: -moz-available;
+			min-width: 250px;
+			max-width: 800px;
+			margin-right: 50px;
+			&:hover {
+				border-color: $link;
+			}
+			&:focus-within {
+				border: 1px solid $link;
+			}
+			.yair-search-container {
+				background-color: $concrete;
+				cursor: text;
+				flex: 1 0;
+				padding: 8px 40px 8px 16px;
+				position: relative;
+				transition-duration: .2s;
+				transition-property: background-color, border-color, color;
+			}
+			#YAIRSearchInput {
+				background: transparent;
+				border: none;
+				color: $black;
+				display: block;
+				font-size: 14px;
+				height: 20px;
+				line-height: 20px;
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				&:focus {
+					outline: none;
+				}
+			}
+			#YAIRSearchButton {
+				background-color: $border;
+				border: none;
+				color: darker($text-light, 20%);
+				cursor: pointer;
+				display: block;
+				padding: 8px 20px;
+			}
+		}
+		.yair-select-all-toggle {
+			margin-top: 11px;
+			margin-right: 5px;
+			min-width: 83px;
+		}
+	}
+	.yair-inbox-panel {
+		.yair-message-row {
+			display: flex;
+			margin: 8px;
+			background-color: $concrete;
+			box-shadow: 0 2px 4px rgba($black, 0.14);
+			&.yair-unread {
+				background-color: $white;
+				.icon-markUnread {
+					display: none;
+				}
+			}
+			&.yair-read {
+				.icon-markRead {
+					display: none;
+				}
+			}
+			&.yair-modmail {
+				background-color: $modmail;
+			}
+			&.yair-has-draft .yair-seperator:after {
+				content: "(Draft)";
+				color: $draft;
+			}
+			&:hover {
+				.yair-message-row-control {
+					.yair-checkbox,
+					.yair-save-toggle {
+						visibility: visible;
+					}
+				}
+				.yair-mrc-wrapper .yair-subject-line .yair-subject-right {
+					.yair-message-buttons {
+						display: block;
+					}
+					.yair-datetime {
+						display: none;
+					}
+				}
+			}
+			.yair-message-row-control {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+				padding: 5px;
+				width: 17px;
+				background: rgba($black, 0.1);
+				cursor: default;
+				.yair-checkbox,
+				.yair-save-toggle {
+					visibility: hidden;
+				}
+				.yair-save-toggle.yair-saved {
+					visibility: visible;
+				}
+				.styled-checkbox:checked + label {
+					visibility: visible;
+				}
+				.yair-last-author {
+					background-position: 0 -306px;
+					cursor: default;
+				}
+				.yair-last-author.yair-last-sent {
+					background-position: 0 -289px;
+					cursor: default;
+				}
+				.icon {
+					margin: 0;
+				}
+			}
+			.yair-mrc-wrapper {
+				flex: 1;
+				padding: 16px;
+				height: 52px;
+				cursor: pointer;
+				min-width: 0px;
+				.yair-subject-line {
+					display: flex;
+					margin-bottom: 8px;
+					line-height: 17px;
+					.yair-subject-left {
+						flex: 1;
+						font-weight: bold;
+						overflow: hidden;
+						white-space: nowrap;
+						min-width: 0;
+						text-overflow: ellipsis;
+						.yair-correspondent a {
+							color: $black;
+							&.author {
+								margin-right: unset;
+							}
+							&:hover {
+								color: $link;
+							}
+						}
+					}
+					.yair-subject-right {
+						margin-left: 8px;
+						> div {
+							display: inline-block;
+							white-space: nowrap;
+						}
+						.yair-message-buttons {
+							display: none;
+							.icon {
+								margin: 0 8px;
+							}
+						}
+					}
+				}
+				.yair-text {
+					overflow: hidden;
+					display: -webkit-box;
+					-webkit-line-clamp: 2;
+					-webkit-box-orient: vertical;
+				}
+				@supports (-moz-appearance: none) {
+					.yair-text {
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+					}
+				}
+			}
+		}
+	}
+}
+.yair-load-more {
+    padding: 10px;
+    text-align: center;
+    background: $concrete;
+    font-style: italic;
+    border-top: 1px solid $white;
+}
+
+/***************
+*    OVERLAY   *
+***************/
+.yair-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba($black, 0.4);
+	z-index: 1000;
+	display: none;
+	opacity: 0;
+	text-align: center;
+	white-space: nowrap;
+	&:before {
+		content: '';
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+		margin-right: -0.25em;
+	}
+	&.show {
+		opacity: 1;
+		.yair-slide-in {
+			margin-top: 0%;
+		}
+	}
+	> div {
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 12px;
+		text-align: left;
+		&.yair-slide-in {
+			margin-top: -50%;
+			transition: none;
+		}
+	}
+	.loading-message,
+	.notification-message {
+		padding: 15px;
+		border-radius: 5px;
+		background-color: $black;
+		color: $white;
+	}
+	.yair-loading-status {
+		display: block;
+		padding-top: 8px;
+	}
+	.yair-loading-status:empty {
+		display: none;
+	}
+}
+
+/****************
+* RES/Nightmode *
+****************/
+.res-floater-list {
+	display: none;
+}
+
+.yair-nightmode {
+	span,
+	.yair-text,
+	label, p, ul, .yair-config-tab, h1, h2, h3, h4, h5, h6 {
+		color: $nightmode-light !important;
+	}
+	.yair-config h2 {
+		color: $white !important;
+	}
+	#header {
+		background-color: $md-gray !important;
+		border-color: lighten($md-gray, 10%) !important;
+		#sr-header-area {
+			background: $nightmode-dark !important;
+			.drop-choices a {
+				color: $nightmode-light !important;
+				background: $md-gray !important;
+				&.choice:hover {
+					background: $nightmode-light !important;
+					color: $md-gray !important;
+				}
+			}
+			.sr-bar a {
+				color: $nightmode-light !important;
+			}
+			#sr-more-link {
+				color: $nightmode-light !important;
+				background: $nightmode-dark !important;
+			}
+		}
+		#header-bottom-left {
+			background: $nightmode-dark !important;
+		}
+		#header-bottom-right {
+			background-color: $md-gray !important;
+			#userbarToggle {
+				background: $md-gray !important;
+				border-color: lighten($md-gray, 10%) !important;
+			}
+			a {
+				color: $nightmode-light !important;
+			}
+		}
+	}
+	&.yair-compact-mode .yair-message-row {
+		border-bottom: 1px solid $nightmode-dark !important;
+	}
+}
+.yair-nightmode,
+.res-nightmode {
+	.yair-body,
+	.yair-main-panel,
+	.yair-conversation-header,
+	.yair-header-panel,
+	.yair-config,
+	#header,
+	#markdown,
+	.yair-load-more {
+		background-color: $nightmode-dark !important;
+	}
+	.yair-sidebar-title a,
+	.yair-datetime,
+	.yair-conversation-title,
+	#YAIRSearchButton,
+	.yair-correspondent a,
+	.ql-editor.ql-blank::before,
+	.yair-conversation-input::placeholder,
+	#YAIRSearchInput {
+		color: $nightmode-light !important;
+	}
+	#header,
+	.yair-sidebar-title,
+	.yair-sidebar-nav,
+	.yair-sidebar-options,
+	.yair-header-panel,
+	.yair-conversation-header,
+	.yair-inbox-panel,
+	.yair-search-panel:focus-within,
+	.yair-select-all-toggle,
+	.yair-search-panel,
+	.yair-conversation-input,
+	.yair-conversation-preview,
+	.yair-pm-body,
+	.yair-sidebar-footer,
+	.yair-header-panel,
+	.yair-config-tabs,
+	.yair-config-footer,
+	.ql-toolbar,
+	#editor,
+	.yair-sidebar-panel {
+		border-color: lighten($md-gray, 10%) !important;
+	}
+	.yair-message-row,
+	.yair-search-container,
+	.yair-privatemessage-container,
+	.yair-sidebar-panel,
+	.yair-sidebar-footer,
+	#YAIRSearchButton {
+		background-color: $md-gray !important;
+	}
+	.yair-pm-header {
+		background-color: lighten($md-gray, 5%) !important;
+	}
+	.yair-unread {
+		background-color: lighten($md-gray, 10%) !important;
+	}
+	.icon {
+		background-color: rgba($black, 0) !important;
+		border-style: none !important;
+	}
+	.yair-message-row-control,
+	.yair-collapsed .yair-pm-header {
+		background: rgba($black, .2) !important;
+	}
+	.yair-compact-mode .yair-message-row,
+	.yair-message-editor, .yair-load-more {
+		border-color: $nightmode-dark !important;
+	}
+	.yair-overlay {
+		background-color: rgba(255,255,255,0.2) !important;
+	}
+	.ql-stroke {
+		stroke: $nightmode-light !important;
+	}
+	.ql-fill {
+		fill: $nightmode-light !important;
+	}
+	.yair-main-panel .yair-modmail {
+		background-color: $modmail-night !important;
+	}
+	#markdown, .yair-privatemessage-container .yair-conversation-preview::before {
+		color: $nightmode-light;
+	}
+
+}
+
+/*****************
+*  Conversation  *
+*****************/
+.yair-conversation-header {
+	@include headerPanel;
+	padding: 16px;
+	display: block;
+	.yair-title-container {
+		display: inline-block;
+		vertical-align: top;
+		.yair-save-toggle {
+			margin-top: 2px;
+			margin-right: 0;
+		}
+		.yair-conversation-title {
+			font-size: 17px;
+			padding-left: 8px;
+			@extend %clipOverflow;
+			color: $black;
+		}
+	}
+
+	.conversation-header-right {
+		min-width: 80px !important;
+		margin-right: -1px;
+		margin-top: 2px;
+		float: right;
+		display: inline-block;
+		.yair-expand-all-btn {
+			border: none;
+			cursor: pointer;
+			height: 15px;
+			margin-top: 2px;
+			width: 15px;
+			background-position: 0 -340px;
+		}
+	}
+}
+.yair-privatemessage-container {
+	position: relative;
+	box-shadow: rgba($black, 0.2) 0px 2px 8px;
+	background-color: $white;
+	margin: 8px;
+	.yair-private-message {
+		.yair-pm-header {
+			margin-bottom: 5px;
+			padding: 8px;
+			cursor: pointer;
+			height: 15px;
+			overflow: hidden;
+			background-color: lighten($border, 5%);
+			h4 {
+				cursor: pointer;
+				&:hover {
+					color: $link;
+				}
+			}
+			.yair-title-text {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				padding-bottom: 7px;
+			}
+			.yair-pm-body-short {
+				display: none;
+				@extend %clipOverflow;
+				margin: 0 10px;
+			}
+			.yair-pm-header-right {
+				flex-grow: 1;
+				text-align: end;
+				white-space: nowrap;
+				.yair-expand-collapse-btn {
+					border: none;
+					cursor: pointer;
+					height: 15px;
+					margin-left: 8px;
+					width: 15px;
+					background-position: 0 -323px;
+					float: unset;
+				}
+			}
+		}
+		.yair-pm-body {
+			padding: 0px 8px;
+			padding-bottom: 10px;
+			cursor: default;
+		}
+	}
+	.yair-message-editor {
+		border-top: 1px solid $border;
+		padding-bottom: 8px;
+		.editor-container {
+			padding-top: 8px;
+			margin: 0 8px;
+			#editor {
+				margin-bottom: 2px;
+			}
+		}
+		.yair-conversation-input {
+				min-width: -webkit-fill-available;
+				max-width: -webkit-fill-available;
+				min-width: -moz-available;
+				max-width: -moz-available;
+				height: 93px;
+				padding: 10px;
+				margin: 8px 8px 0px 8px;
+				border: 1px solid $border;
+				resize: none;
+				&:focus {
+					outline-color: $link;
+				}
+				&::placeholder {
+					font-style: italic;
+				}
+			}
+		.yair-response-footer {
+			height: 50px;
+			margin: 0 8px;
+			.yair-switch-editor, .yair-conversation-reply-btn {
+				margin: 8px 0;
+				background-color: $link;
+				padding: 8px 16px;
+				border: none;
+				outline: none;
+				font-size: 14px;
+				color: $white;
+				cursor: pointer;
+
+			}
+			.yair-conversation-reply-btn {
+				float: right;
+				&:disabled {
+					background-color: $text-light;
+					cursor: not-allowed;
+				}
+			}
+		}
+	}
+	.yair-conversation-preview {
+		border: 1px solid $border;
+		padding: 8px;
+		margin: 0 8px;
+		&:before {
+			content: 'Preview:';
+			display: block;
+			font-size: 13px;
+			font-weight: bold;
+			padding-bottom: 3px;
+		}
+		&:empty:after {
+			content: 'No message to preview';
+			color: $text-light;
+		}
+	}
+	.yair-collapsed {
+		padding-bottom: 0;
+		.yair-pm-header {
+			margin-bottom: 0;
+			background-color: $concrete;
+			.yair-pm-body-short {
+				display: block;
+			}
+			.yair-pm-header-right .yair-expand-collapse-btn {
+				background-position: 0 -340px;
+			}
+		}
+		.yair-pm-body {
+			display: none;
+		}
+	}
+}
+
+/*****************
+*  Compact Mode  *
+*****************/
+.yair-compact-mode {
+	.yair-sidebar-panel {
+		min-width: 199px;
+		.yair-sidebar-menu {
+			padding: 0;
+		}
+	}
+	.yair-sidebar-footer {
+		width: 167px;
+	}
+	.yair-main-panel {
+		min-width: calc(100% - 200px);
+		.yair-inbox-panel .yair-message-row {
+			margin: 0;
+			border-bottom: 1px solid $white;
+			box-shadow: unset;
+			.styled-checkbox + label::before {
+				margin-right: unset;
+			}
+			.yair-message-row-control {
+				flex-direction: row;
+				width: 60px;
+				padding-top: 17px;
+			}
+			.yair-mrc-wrapper {
+				padding: 4px;
+				height: 40px;
+				overflow: hidden;
+				.yair-subject-line {
+					margin-bottom: 4px;
+				}
+				.yair-text {
+					-webkit-line-clamp: 1;
+				}
+			}
+		}
+	}
+	.yair-privatemessage-container {
+		margin: 0;
+		box-shadow: unset;
+	}
+}
+
+/*****************
+*  CONFIG PANEL  *
+*****************/
+.yair-config {
+	background-color: $white;
+	max-width: 800px;
+	min-height: 470px;
+	position: relative;
+	white-space: initial;
+	h2 {
+		text-align: center;
+		font-size: large;
+		padding: 8px;
+		background-color: $link;
+		color: $white;
+	}
+	h3 {
+		margin: 8px 0;
+	}
+	.yair-config-tabs {
+		display: flex;
+		text-align: center;
+		height: 30px;
+		border-bottom: 1px solid $border;
+	}
+	.yair-config-content-panel {
+		margin: 15px 20px;
+		.yair-checkbox, #YAIRRefreshInterval {
+			margin-bottom: 4px;
+			margin-right: 10px;
+		}
+	}
+	.yair-config-tab {
+		flex: 1;
+		cursor: pointer;
+		padding-top: 7px;
+		font-weight: bold;
+		&.yair-active-tab {
+			border-bottom: 4px solid $link;
+		}
+	}
+	.yair-config-content {
+		display: none;
+		margin-bottom: 57px;
+		&.yair-active-tab {
+			display: block;
+		}
+		> div {
+			margin-bottom: 10px;
+		}
+	}
+	.yair-config-footer {
+		position: absolute;
+		bottom: 8px;
+		width: 100%;
+		text-align: right;
+		border-top: 1px solid $border;
+		padding-top: 8px;
+	}
+	button.yair-save-button,
+	#YAIRResetInbox,
+	#YAIRResetInboxToggle,
+	#YAIRCancelResetInbox,
+	#YAIRReindexMessages {
+		background-color: $link;
+		border: unset;
+		padding: 5px;
+		color: $white;
+		border-radius: 2px;
+		width: 100px;
+	}
+	button.yair-save-button {
+		margin-right: 8px;
+	}
+	button#YAIRResetInboxToggle,
+	button#YAIRReindexMessages {
+		margin-bottom: 10px;
+	}
+	#YAIRConfirmReset {
+		margin: auto;
+		width: 260px;
+		padding: 50px;
+		> p {
+			margin-bottom: 10px;
+		}
+		button#YAIRCancelResetInbox {
+			margin-left: 55px;
+		}
+	}
+
+}
+
+/*****************
+* EDITOR OPTIONS *
+*****************/
+
+.ql-toolbar {
+	height: 40px;
+}
+.ql-editor.ql-blank::before {
+    margin-top: 5px;
+}

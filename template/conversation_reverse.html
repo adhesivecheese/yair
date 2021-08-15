@@ -1,0 +1,32 @@
+<div class="yair-conversation">
+	<div class="yair-conversation-header">
+		<div class="yair-title-container">
+			<div class="icon yair-save-toggle"></div>
+			<h2 class="yair-conversation-title"></h2>
+		</div>
+		
+		<div class="conversation-header-right">
+			<button id="YairExportConversation" class="icon icon-markRead" title="Export Conversation"></button>
+			<button class="icon icon-archive" title="Archive Conversation"></button>
+			<button class="icon icon-restore" title="Restore Conversation"></button>
+			<button class="icon icon-markUnread" title="Mark Conversation Unread"></button>
+			<button id="collapseToggle" class="icon yair-expand-all-btn" title="Expand all"></button>
+		</div>
+	</div>
+	
+	<div class="yair-privatemessage-container">
+		
+		<div class="yair-message-editor">
+			<div class="editor-container">
+				<div id="editor" class="md"></div>
+			</div>
+			<pre><textarea id="markdown" class="yair-conversation-input yair-hide" placeholder="Message Response..."></textarea></pre>
+			<div class="yair-response-footer">
+				<button class="yair-switch-editor">Edit Markdown</button>
+				<button class="yair-conversation-reply-btn" disabled="disabled">Reply</button>
+			</div>	
+			<div class="yair-conversation-preview md yair-hide"></div>
+		</div>
+		<div class="yair-private-messages"><!--Template is inserted here--></div>
+	</div>
+</div>

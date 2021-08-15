@@ -1,0 +1,888 @@
+.yair-show-inbox .inbox .yair-inbox .title, .yair-show-drafts .inbox .yair-drafts .title, .yair-show-saved .inbox .yair-saved .title, .yair-show-archived .inbox .yair-archived .title, .yair-show-modmail .modmail-inbox .title, .yair-show-moddrafts .modmail .yair-drafts .title, .yair-show-modsaved .modmail .yair-saved .title, .yair-show-modarchived .modmail .yair-archived .title {
+  color: #0DD3BB;
+  font-weight: bold; }
+
+.yair-conversation-header .yair-title-container .yair-conversation-title, .yair-privatemessage-container .yair-private-message .yair-pm-header .yair-pm-body-short {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; }
+
+/* Modify reddit elements */
+#classy-error,
+.footer-parent,
+.pagename,
+.debuginfo,
+#hsts_pixel {
+  display: none; }
+
+.content {
+  min-height: calc(100vh - 65px);
+  margin: 0 !important; }
+
+.md {
+  max-width: unset !important; }
+
+.author-tooltip__head {
+  padding: 8px !important;
+  background-color: unset !important;
+  border: unset !important; }
+  .author-tooltip__head .author-tooltip__credentials-list {
+    margin-top: 0 !important; }
+
+.author-tooltip__profile-link,
+.author-tooltip__link-list,
+.author-tooltip__avatar,
+.author-tooltip__title {
+  display: none !important; }
+
+/* Set YAIR defaults */
+.yair-content,
+.yair-body,
+.yair-sidebar-panel,
+.yair-main-panel {
+  min-height: inherit; }
+
+.yair-content {
+  font-size: 1.2em; }
+
+.yair-hide {
+  display: none !important; }
+
+.yair-body {
+  display: flex; }
+
+/* hide elements depending on page */
+.yair-show-inbox #YAIRBulkRestore,
+.yair-show-inbox .icon-restore,
+.yair-show-saved #YAIRBulkRestore,
+.yair-show-saved .icon-restore,
+.yair-show-modmail #YAIRBulkRestore,
+.yair-show-modmail .icon-restore,
+.yair-show-modsaved #YAIRBulkRestore,
+.yair-show-modsaved .icon-restore {
+  display: none; }
+
+.yair-show-archived #YAIRBulkDelete,
+.yair-show-archived .yair-message-row .icon-archive,
+.yair-show-modarchived #YAIRBulkDelete,
+.yair-show-modarchived .yair-message-row .icon-archive {
+  display: none; }
+
+.yair-show-conversation .yair-main-panel .yair-header-panel {
+  display: none; }
+
+/* Icons */
+.icon {
+  height: 17px;
+  width: 17px;
+  background: url("chrome-extension://__MSG_@@extension_id__/images/sprites.png");
+  background-repeat: no-repeat;
+  border: none;
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+  cursor: pointer; }
+  .icon.msg-icon {
+    background-position: 0 -34px; }
+    .icon.msg-icon:hover {
+      background-position: 0 -51px; }
+  .icon.icon-inbox, .icon.icon-markUnread {
+    background-position: 0 -68px; }
+  .icon.icon-drafts {
+    background-position: 0 -102px; }
+  .icon.icon-saved {
+    background-position: 0 -170px; }
+  .icon.icon-archive {
+    background-position: 0 -136px; }
+  .icon.icon-restore {
+    background-position: 0 -272px; }
+  .icon.icon-markRead {
+    background-position: 0 -255px; }
+  .icon.icon-config {
+    margin-left: 0;
+    background-position: 0 -17px; }
+  .icon.yair-save-toggle {
+    background-position: 0 -204px; }
+    .icon.yair-save-toggle.yair-saved {
+      background-position: 0 -187px; }
+  .icon.icon-modmail {
+    background-position: 0 -357px; }
+  .icon.icon-export {
+    background-position: 0 -391px; }
+
+/* Checkboxes */
+.styled-checkbox {
+  opacity: 0;
+  position: absolute; }
+  .styled-checkbox + label {
+    cursor: pointer;
+    padding: 0;
+    position: relative; }
+  .styled-checkbox + label:before {
+    height: 17px;
+    width: 17px;
+    background: url("chrome-extension://__MSG_@@extension_id__/images/sprites.png");
+    background-position: 0 -221px;
+    content: '';
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: text-top; }
+  .styled-checkbox:checked + label:before {
+    background-position: 0 -238px; }
+
+@media screen and (min--moz-device-pixel-ratio: 0) {
+  .icon, .styled-checkbox + label:before {
+    background: url("moz-extension://__MSG_@@extension_id__/images/sprites.png"); }
+  .styled-checkbox + label:before {
+    background-position: 0 -221px; } }
+
+/*****************
+*     Sidebar    *
+*****************/
+.yair-show-inbox .inbox .icon-inbox {
+  background-position: 0 -85px; }
+
+.yair-show-drafts .inbox .icon-drafts {
+  background-position: 0 -119px; }
+
+.yair-show-saved .inbox .icon-saved {
+  background-position: 0 -187px; }
+
+.yair-show-archived .inbox .icon-archive {
+  background-position: 0 -153px; }
+
+.yair-show-modmail .icon-modmail {
+  background-position: 0 -374px; }
+
+.yair-show-moddrafts .modmail .icon-drafts {
+  background-position: 0 -119px; }
+
+.yair-show-modsaved .modmail .icon-saved {
+  background-position: 0 -187px; }
+
+.yair-show-modarchived .modmail .icon-archive {
+  background-position: 0 -153px; }
+
+.yair-sidebar-panel {
+  min-width: 250px;
+  border-right: 1px solid #EFEFED; }
+  .yair-sidebar-panel .yair-sidebar-menu {
+    position: sticky;
+    top: 0; }
+    .yair-sidebar-panel .yair-sidebar-menu .yair-sidebar-title {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #EFEFED;
+      height: 36px;
+      align-items: center;
+      padding: 8px 16px; }
+      .yair-sidebar-panel .yair-sidebar-menu .yair-sidebar-title .title-message {
+        font-size: 22px;
+        font-weight: bold; }
+        .yair-sidebar-panel .yair-sidebar-menu .yair-sidebar-title .title-message a {
+          color: #949494;
+          cursor: pointer; }
+      .yair-sidebar-panel .yair-sidebar-menu .yair-sidebar-title .msg-icon {
+        margin-right: 0; }
+    .yair-sidebar-panel .yair-sidebar-menu .yair-sidebar-nav {
+      margin: 16px;
+      border-bottom: 1px solid #EFEFED; }
+      .yair-sidebar-panel .yair-sidebar-menu .yair-sidebar-nav .nav-item {
+        cursor: pointer;
+        margin-bottom: 16px;
+        color: #949494; }
+        .yair-sidebar-panel .yair-sidebar-menu .yair-sidebar-nav .nav-item .title {
+          margin-bottom: 16px; }
+        .yair-sidebar-panel .yair-sidebar-menu .yair-sidebar-nav .nav-item:hover {
+          color: #0DD3BB;
+          font-weight: bold; }
+        .yair-sidebar-panel .yair-sidebar-menu .yair-sidebar-nav .nav-item:hover .icon-inbox {
+          background-position: 0 -85px; }
+        .yair-sidebar-panel .yair-sidebar-menu .yair-sidebar-nav .nav-item:hover .icon-drafts {
+          background-position: 0 -119px; }
+        .yair-sidebar-panel .yair-sidebar-menu .yair-sidebar-nav .nav-item:hover .icon-saved {
+          background-position: 0 -187px; }
+        .yair-sidebar-panel .yair-sidebar-menu .yair-sidebar-nav .nav-item:hover .icon-archive {
+          background-position: 0 -153px; }
+        .yair-sidebar-panel .yair-sidebar-menu .yair-sidebar-nav .nav-item:hover .icon-modmail {
+          background-position: 0 -374px; }
+    .yair-sidebar-panel .yair-sidebar-menu .yair-sidebar-label {
+      height: 30px;
+      text-align: center;
+      color: #949494;
+      cursor: default; }
+    .yair-sidebar-panel .yair-sidebar-menu .yair-sidebar-options {
+      margin: 16px;
+      border-bottom: 1px solid #EFEFED; }
+      .yair-sidebar-panel .yair-sidebar-menu .yair-sidebar-options .options-item {
+        cursor: pointer;
+        margin-bottom: 16px;
+        color: #949494; }
+  .yair-sidebar-panel .yair-sidebar-footer {
+    position: fixed;
+    bottom: 0;
+    padding: 16px;
+    border-top: 1px solid #EFEFED;
+    width: 218px; }
+    .yair-sidebar-panel .yair-sidebar-footer #YAIRShowConfig {
+      cursor: pointer;
+      color: #949494; }
+
+/*****************
+*      Inbox     *
+*****************/
+.yair-main-panel {
+  min-width: 350px;
+  width: calc(100% - 250px);
+  background-color: #EFEFED; }
+  .yair-main-panel .yair-header-panel {
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 53px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #EFEFED;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+    .yair-main-panel .yair-header-panel .yair-search-panel {
+      border-radius: 4px;
+      border: 1px solid #EFEFED;
+      box-sizing: border-box;
+      display: flex;
+      height: 36px;
+      overflow: hidden;
+      width: -webkit-fill-available;
+      width: -moz-available;
+      min-width: 250px;
+      max-width: 800px;
+      margin-right: 50px; }
+      .yair-main-panel .yair-header-panel .yair-search-panel:hover {
+        border-color: #0DD3BB; }
+      .yair-main-panel .yair-header-panel .yair-search-panel:focus-within {
+        border: 1px solid #0DD3BB; }
+      .yair-main-panel .yair-header-panel .yair-search-panel .yair-search-container {
+        background-color: #F2F2F2;
+        cursor: text;
+        flex: 1 0;
+        padding: 8px 40px 8px 16px;
+        position: relative;
+        transition-duration: .2s;
+        transition-property: background-color, border-color, color; }
+      .yair-main-panel .yair-header-panel .yair-search-panel #YAIRSearchInput {
+        background: transparent;
+        border: none;
+        color: #000000;
+        display: block;
+        font-size: 14px;
+        height: 20px;
+        line-height: 20px;
+        margin: 0;
+        padding: 0;
+        width: 100%; }
+        .yair-main-panel .yair-header-panel .yair-search-panel #YAIRSearchInput:focus {
+          outline: none; }
+      .yair-main-panel .yair-header-panel .yair-search-panel #YAIRSearchButton {
+        background-color: #EFEFED;
+        border: none;
+        color: darker(#949494, 20%);
+        cursor: pointer;
+        display: block;
+        padding: 8px 20px; }
+    .yair-main-panel .yair-header-panel .yair-select-all-toggle {
+      margin-top: 11px;
+      margin-right: 5px;
+      min-width: 83px; }
+  .yair-main-panel .yair-inbox-panel .yair-message-row {
+    display: flex;
+    margin: 8px;
+    background-color: #F2F2F2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.14); }
+    .yair-main-panel .yair-inbox-panel .yair-message-row.yair-unread {
+      background-color: #FFFFFF; }
+      .yair-main-panel .yair-inbox-panel .yair-message-row.yair-unread .icon-markUnread {
+        display: none; }
+    .yair-main-panel .yair-inbox-panel .yair-message-row.yair-read .icon-markRead {
+      display: none; }
+    .yair-main-panel .yair-inbox-panel .yair-message-row.yair-modmail {
+      background-color: #F7F3D5; }
+    .yair-main-panel .yair-inbox-panel .yair-message-row.yair-has-draft .yair-seperator:after {
+      content: "(Draft)";
+      color: #C77C77; }
+    .yair-main-panel .yair-inbox-panel .yair-message-row:hover .yair-message-row-control .yair-checkbox,
+    .yair-main-panel .yair-inbox-panel .yair-message-row:hover .yair-message-row-control .yair-save-toggle {
+      visibility: visible; }
+    .yair-main-panel .yair-inbox-panel .yair-message-row:hover .yair-mrc-wrapper .yair-subject-line .yair-subject-right .yair-message-buttons {
+      display: block; }
+    .yair-main-panel .yair-inbox-panel .yair-message-row:hover .yair-mrc-wrapper .yair-subject-line .yair-subject-right .yair-datetime {
+      display: none; }
+    .yair-main-panel .yair-inbox-panel .yair-message-row .yair-message-row-control {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 5px;
+      width: 17px;
+      background: rgba(0, 0, 0, 0.1);
+      cursor: default; }
+      .yair-main-panel .yair-inbox-panel .yair-message-row .yair-message-row-control .yair-checkbox,
+      .yair-main-panel .yair-inbox-panel .yair-message-row .yair-message-row-control .yair-save-toggle {
+        visibility: hidden; }
+      .yair-main-panel .yair-inbox-panel .yair-message-row .yair-message-row-control .yair-save-toggle.yair-saved {
+        visibility: visible; }
+      .yair-main-panel .yair-inbox-panel .yair-message-row .yair-message-row-control .styled-checkbox:checked + label {
+        visibility: visible; }
+      .yair-main-panel .yair-inbox-panel .yair-message-row .yair-message-row-control .yair-last-author {
+        background-position: 0 -306px;
+        cursor: default; }
+      .yair-main-panel .yair-inbox-panel .yair-message-row .yair-message-row-control .yair-last-author.yair-last-sent {
+        background-position: 0 -289px;
+        cursor: default; }
+      .yair-main-panel .yair-inbox-panel .yair-message-row .yair-message-row-control .icon {
+        margin: 0; }
+    .yair-main-panel .yair-inbox-panel .yair-message-row .yair-mrc-wrapper {
+      flex: 1;
+      padding: 16px;
+      height: 52px;
+      cursor: pointer;
+      min-width: 0px; }
+      .yair-main-panel .yair-inbox-panel .yair-message-row .yair-mrc-wrapper .yair-subject-line {
+        display: flex;
+        margin-bottom: 8px;
+        line-height: 17px; }
+        .yair-main-panel .yair-inbox-panel .yair-message-row .yair-mrc-wrapper .yair-subject-line .yair-subject-left {
+          flex: 1;
+          font-weight: bold;
+          overflow: hidden;
+          white-space: nowrap;
+          min-width: 0;
+          text-overflow: ellipsis; }
+          .yair-main-panel .yair-inbox-panel .yair-message-row .yair-mrc-wrapper .yair-subject-line .yair-subject-left .yair-correspondent a {
+            color: #000000; }
+            .yair-main-panel .yair-inbox-panel .yair-message-row .yair-mrc-wrapper .yair-subject-line .yair-subject-left .yair-correspondent a.author {
+              margin-right: unset; }
+            .yair-main-panel .yair-inbox-panel .yair-message-row .yair-mrc-wrapper .yair-subject-line .yair-subject-left .yair-correspondent a:hover {
+              color: #0DD3BB; }
+        .yair-main-panel .yair-inbox-panel .yair-message-row .yair-mrc-wrapper .yair-subject-line .yair-subject-right {
+          margin-left: 8px; }
+          .yair-main-panel .yair-inbox-panel .yair-message-row .yair-mrc-wrapper .yair-subject-line .yair-subject-right > div {
+            display: inline-block;
+            white-space: nowrap; }
+          .yair-main-panel .yair-inbox-panel .yair-message-row .yair-mrc-wrapper .yair-subject-line .yair-subject-right .yair-message-buttons {
+            display: none; }
+            .yair-main-panel .yair-inbox-panel .yair-message-row .yair-mrc-wrapper .yair-subject-line .yair-subject-right .yair-message-buttons .icon {
+              margin: 0 8px; }
+      .yair-main-panel .yair-inbox-panel .yair-message-row .yair-mrc-wrapper .yair-text {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical; }
+      @supports (-moz-appearance: none) {
+        .yair-main-panel .yair-inbox-panel .yair-message-row .yair-mrc-wrapper .yair-text {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis; } }
+
+.yair-load-more {
+  padding: 10px;
+  text-align: center;
+  background: #F2F2F2;
+  font-style: italic;
+  border-top: 1px solid #FFFFFF; }
+
+/***************
+*    OVERLAY   *
+***************/
+.yair-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  display: none;
+  opacity: 0;
+  text-align: center;
+  white-space: nowrap; }
+  .yair-overlay:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; }
+  .yair-overlay.show {
+    opacity: 1; }
+    .yair-overlay.show .yair-slide-in {
+      margin-top: 0%; }
+  .yair-overlay > div {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 12px;
+    text-align: left; }
+    .yair-overlay > div.yair-slide-in {
+      margin-top: -50%;
+      transition: none; }
+  .yair-overlay .loading-message,
+  .yair-overlay .notification-message {
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #000000;
+    color: #FFFFFF; }
+  .yair-overlay .yair-loading-status {
+    display: block;
+    padding-top: 8px; }
+  .yair-overlay .yair-loading-status:empty {
+    display: none; }
+
+/****************
+* RES/Nightmode *
+****************/
+.res-floater-list {
+  display: none; }
+
+.yair-nightmode span,
+.yair-nightmode .yair-text,
+.yair-nightmode label, .yair-nightmode p, .yair-nightmode ul, .yair-nightmode .yair-config-tab, .yair-nightmode h1, .yair-nightmode h2, .yair-nightmode h3, .yair-nightmode h4, .yair-nightmode h5, .yair-nightmode h6 {
+  color: #CCCCCC !important; }
+
+.yair-nightmode .yair-config h2 {
+  color: #FFFFFF !important; }
+
+.yair-nightmode #header {
+  background-color: #353535 !important;
+  border-color: #4f4f4f !important; }
+  .yair-nightmode #header #sr-header-area {
+    background: #2C2C2C !important; }
+    .yair-nightmode #header #sr-header-area .drop-choices a {
+      color: #CCCCCC !important;
+      background: #353535 !important; }
+      .yair-nightmode #header #sr-header-area .drop-choices a.choice:hover {
+        background: #CCCCCC !important;
+        color: #353535 !important; }
+    .yair-nightmode #header #sr-header-area .sr-bar a {
+      color: #CCCCCC !important; }
+    .yair-nightmode #header #sr-header-area #sr-more-link {
+      color: #CCCCCC !important;
+      background: #2C2C2C !important; }
+  .yair-nightmode #header #header-bottom-left {
+    background: #2C2C2C !important; }
+  .yair-nightmode #header #header-bottom-right {
+    background-color: #353535 !important; }
+    .yair-nightmode #header #header-bottom-right #userbarToggle {
+      background: #353535 !important;
+      border-color: #4f4f4f !important; }
+    .yair-nightmode #header #header-bottom-right a {
+      color: #CCCCCC !important; }
+
+.yair-nightmode.yair-compact-mode .yair-message-row {
+  border-bottom: 1px solid #2C2C2C !important; }
+
+.yair-nightmode .yair-body,
+.yair-nightmode .yair-main-panel,
+.yair-nightmode .yair-conversation-header,
+.yair-nightmode .yair-header-panel,
+.yair-nightmode .yair-config,
+.yair-nightmode #header,
+.yair-nightmode #markdown,
+.yair-nightmode .yair-load-more,
+.res-nightmode .yair-body,
+.res-nightmode .yair-main-panel,
+.res-nightmode .yair-conversation-header,
+.res-nightmode .yair-header-panel,
+.res-nightmode .yair-config,
+.res-nightmode #header,
+.res-nightmode #markdown,
+.res-nightmode .yair-load-more {
+  background-color: #2C2C2C !important; }
+
+.yair-nightmode .yair-sidebar-title a,
+.yair-nightmode .yair-datetime,
+.yair-nightmode .yair-conversation-title,
+.yair-nightmode #YAIRSearchButton,
+.yair-nightmode .yair-correspondent a,
+.yair-nightmode .ql-editor.ql-blank::before,
+.yair-nightmode .yair-conversation-input::placeholder,
+.yair-nightmode #YAIRSearchInput,
+.res-nightmode .yair-sidebar-title a,
+.res-nightmode .yair-datetime,
+.res-nightmode .yair-conversation-title,
+.res-nightmode #YAIRSearchButton,
+.res-nightmode .yair-correspondent a,
+.res-nightmode .ql-editor.ql-blank::before,
+.res-nightmode .yair-conversation-input::placeholder,
+.res-nightmode #YAIRSearchInput {
+  color: #CCCCCC !important; }
+
+.yair-nightmode #header,
+.yair-nightmode .yair-sidebar-title,
+.yair-nightmode .yair-sidebar-nav,
+.yair-nightmode .yair-sidebar-options,
+.yair-nightmode .yair-header-panel,
+.yair-nightmode .yair-conversation-header,
+.yair-nightmode .yair-inbox-panel,
+.yair-nightmode .yair-search-panel:focus-within,
+.yair-nightmode .yair-select-all-toggle,
+.yair-nightmode .yair-search-panel,
+.yair-nightmode .yair-conversation-input,
+.yair-nightmode .yair-conversation-preview,
+.yair-nightmode .yair-pm-body,
+.yair-nightmode .yair-sidebar-footer,
+.yair-nightmode .yair-header-panel,
+.yair-nightmode .yair-config-tabs,
+.yair-nightmode .yair-config-footer,
+.yair-nightmode .ql-toolbar,
+.yair-nightmode #editor,
+.yair-nightmode .yair-sidebar-panel,
+.res-nightmode #header,
+.res-nightmode .yair-sidebar-title,
+.res-nightmode .yair-sidebar-nav,
+.res-nightmode .yair-sidebar-options,
+.res-nightmode .yair-header-panel,
+.res-nightmode .yair-conversation-header,
+.res-nightmode .yair-inbox-panel,
+.res-nightmode .yair-search-panel:focus-within,
+.res-nightmode .yair-select-all-toggle,
+.res-nightmode .yair-search-panel,
+.res-nightmode .yair-conversation-input,
+.res-nightmode .yair-conversation-preview,
+.res-nightmode .yair-pm-body,
+.res-nightmode .yair-sidebar-footer,
+.res-nightmode .yair-header-panel,
+.res-nightmode .yair-config-tabs,
+.res-nightmode .yair-config-footer,
+.res-nightmode .ql-toolbar,
+.res-nightmode #editor,
+.res-nightmode .yair-sidebar-panel {
+  border-color: #4f4f4f !important; }
+
+.yair-nightmode .yair-message-row,
+.yair-nightmode .yair-search-container,
+.yair-nightmode .yair-privatemessage-container,
+.yair-nightmode .yair-sidebar-panel,
+.yair-nightmode .yair-sidebar-footer,
+.yair-nightmode #YAIRSearchButton,
+.res-nightmode .yair-message-row,
+.res-nightmode .yair-search-container,
+.res-nightmode .yair-privatemessage-container,
+.res-nightmode .yair-sidebar-panel,
+.res-nightmode .yair-sidebar-footer,
+.res-nightmode #YAIRSearchButton {
+  background-color: #353535 !important; }
+
+.yair-nightmode .yair-pm-header,
+.res-nightmode .yair-pm-header {
+  background-color: #424242 !important; }
+
+.yair-nightmode .yair-unread,
+.res-nightmode .yair-unread {
+  background-color: #4f4f4f !important; }
+
+.yair-nightmode .icon,
+.res-nightmode .icon {
+  background-color: transparent !important;
+  border-style: none !important; }
+
+.yair-nightmode .yair-message-row-control,
+.yair-nightmode .yair-collapsed .yair-pm-header,
+.res-nightmode .yair-message-row-control,
+.res-nightmode .yair-collapsed .yair-pm-header {
+  background: rgba(0, 0, 0, 0.2) !important; }
+
+.yair-nightmode .yair-compact-mode .yair-message-row,
+.yair-nightmode .yair-message-editor, .yair-nightmode .yair-load-more,
+.res-nightmode .yair-compact-mode .yair-message-row,
+.res-nightmode .yair-message-editor,
+.res-nightmode .yair-load-more {
+  border-color: #2C2C2C !important; }
+
+.yair-nightmode .yair-overlay,
+.res-nightmode .yair-overlay {
+  background-color: rgba(255, 255, 255, 0.2) !important; }
+
+.yair-nightmode .ql-stroke,
+.res-nightmode .ql-stroke {
+  stroke: #CCCCCC !important; }
+
+.yair-nightmode .ql-fill,
+.res-nightmode .ql-fill {
+  fill: #CCCCCC !important; }
+
+.yair-nightmode .yair-main-panel .yair-modmail,
+.res-nightmode .yair-main-panel .yair-modmail {
+  background-color: #656357 !important; }
+
+.yair-nightmode #markdown, .yair-nightmode .yair-privatemessage-container .yair-conversation-preview::before,
+.res-nightmode #markdown,
+.res-nightmode .yair-privatemessage-container .yair-conversation-preview::before {
+  color: #CCCCCC; }
+
+/*****************
+*  Conversation  *
+*****************/
+.yair-conversation-header {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 53px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #EFEFED;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 16px;
+  display: block; }
+  .yair-conversation-header .yair-title-container {
+    display: inline-block;
+    vertical-align: top; }
+    .yair-conversation-header .yair-title-container .yair-save-toggle {
+      margin-top: 2px;
+      margin-right: 0; }
+    .yair-conversation-header .yair-title-container .yair-conversation-title {
+      font-size: 17px;
+      padding-left: 8px;
+      color: #000000; }
+  .yair-conversation-header .conversation-header-right {
+    min-width: 80px !important;
+    margin-right: -1px;
+    margin-top: 2px;
+    float: right;
+    display: inline-block; }
+    .yair-conversation-header .conversation-header-right .yair-expand-all-btn {
+      border: none;
+      cursor: pointer;
+      height: 15px;
+      margin-top: 2px;
+      width: 15px;
+      background-position: 0 -340px; }
+
+.yair-privatemessage-container {
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px;
+  background-color: #FFFFFF;
+  margin: 8px; }
+  .yair-privatemessage-container .yair-private-message .yair-pm-header {
+    margin-bottom: 5px;
+    padding: 8px;
+    cursor: pointer;
+    height: 15px;
+    overflow: hidden;
+    background-color: #fbfbfb; }
+    .yair-privatemessage-container .yair-private-message .yair-pm-header h4 {
+      cursor: pointer; }
+      .yair-privatemessage-container .yair-private-message .yair-pm-header h4:hover {
+        color: #0DD3BB; }
+    .yair-privatemessage-container .yair-private-message .yair-pm-header .yair-title-text {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      padding-bottom: 7px; }
+    .yair-privatemessage-container .yair-private-message .yair-pm-header .yair-pm-body-short {
+      display: none;
+      margin: 0 10px; }
+    .yair-privatemessage-container .yair-private-message .yair-pm-header .yair-pm-header-right {
+      flex-grow: 1;
+      text-align: end;
+      white-space: nowrap; }
+      .yair-privatemessage-container .yair-private-message .yair-pm-header .yair-pm-header-right .yair-expand-collapse-btn {
+        border: none;
+        cursor: pointer;
+        height: 15px;
+        margin-left: 8px;
+        width: 15px;
+        background-position: 0 -323px;
+        float: unset; }
+  .yair-privatemessage-container .yair-private-message .yair-pm-body {
+    padding: 0px 8px;
+    padding-bottom: 10px;
+    cursor: default; }
+  .yair-privatemessage-container .yair-message-editor {
+    border-top: 1px solid #EFEFED;
+    padding-bottom: 8px; }
+    .yair-privatemessage-container .yair-message-editor .editor-container {
+      padding-top: 8px;
+      margin: 0 8px; }
+      .yair-privatemessage-container .yair-message-editor .editor-container #editor {
+        margin-bottom: 2px; }
+    .yair-privatemessage-container .yair-message-editor .yair-conversation-input {
+      min-width: -webkit-fill-available;
+      max-width: -webkit-fill-available;
+      min-width: -moz-available;
+      max-width: -moz-available;
+      height: 93px;
+      padding: 10px;
+      margin: 8px 8px 0px 8px;
+      border: 1px solid #EFEFED;
+      resize: none; }
+      .yair-privatemessage-container .yair-message-editor .yair-conversation-input:focus {
+        outline-color: #0DD3BB; }
+      .yair-privatemessage-container .yair-message-editor .yair-conversation-input::placeholder {
+        font-style: italic; }
+    .yair-privatemessage-container .yair-message-editor .yair-response-footer {
+      height: 50px;
+      margin: 0 8px; }
+      .yair-privatemessage-container .yair-message-editor .yair-response-footer .yair-switch-editor, .yair-privatemessage-container .yair-message-editor .yair-response-footer .yair-conversation-reply-btn {
+        margin: 8px 0;
+        background-color: #0DD3BB;
+        padding: 8px 16px;
+        border: none;
+        outline: none;
+        font-size: 14px;
+        color: #FFFFFF;
+        cursor: pointer; }
+      .yair-privatemessage-container .yair-message-editor .yair-response-footer .yair-conversation-reply-btn {
+        float: right; }
+        .yair-privatemessage-container .yair-message-editor .yair-response-footer .yair-conversation-reply-btn:disabled {
+          background-color: #949494;
+          cursor: not-allowed; }
+  .yair-privatemessage-container .yair-conversation-preview {
+    border: 1px solid #EFEFED;
+    padding: 8px;
+    margin: 0 8px; }
+    .yair-privatemessage-container .yair-conversation-preview:before {
+      content: 'Preview:';
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
+      padding-bottom: 3px; }
+    .yair-privatemessage-container .yair-conversation-preview:empty:after {
+      content: 'No message to preview';
+      color: #949494; }
+  .yair-privatemessage-container .yair-collapsed {
+    padding-bottom: 0; }
+    .yair-privatemessage-container .yair-collapsed .yair-pm-header {
+      margin-bottom: 0;
+      background-color: #F2F2F2; }
+      .yair-privatemessage-container .yair-collapsed .yair-pm-header .yair-pm-body-short {
+        display: block; }
+      .yair-privatemessage-container .yair-collapsed .yair-pm-header .yair-pm-header-right .yair-expand-collapse-btn {
+        background-position: 0 -340px; }
+    .yair-privatemessage-container .yair-collapsed .yair-pm-body {
+      display: none; }
+
+/*****************
+*  Compact Mode  *
+*****************/
+.yair-compact-mode .yair-sidebar-panel {
+  min-width: 199px; }
+  .yair-compact-mode .yair-sidebar-panel .yair-sidebar-menu {
+    padding: 0; }
+
+.yair-compact-mode .yair-sidebar-footer {
+  width: 167px; }
+
+.yair-compact-mode .yair-main-panel {
+  min-width: calc(100% - 200px); }
+  .yair-compact-mode .yair-main-panel .yair-inbox-panel .yair-message-row {
+    margin: 0;
+    border-bottom: 1px solid #FFFFFF;
+    box-shadow: unset; }
+    .yair-compact-mode .yair-main-panel .yair-inbox-panel .yair-message-row .styled-checkbox + label::before {
+      margin-right: unset; }
+    .yair-compact-mode .yair-main-panel .yair-inbox-panel .yair-message-row .yair-message-row-control {
+      flex-direction: row;
+      width: 60px;
+      padding-top: 17px; }
+    .yair-compact-mode .yair-main-panel .yair-inbox-panel .yair-message-row .yair-mrc-wrapper {
+      padding: 4px;
+      height: 40px;
+      overflow: hidden; }
+      .yair-compact-mode .yair-main-panel .yair-inbox-panel .yair-message-row .yair-mrc-wrapper .yair-subject-line {
+        margin-bottom: 4px; }
+      .yair-compact-mode .yair-main-panel .yair-inbox-panel .yair-message-row .yair-mrc-wrapper .yair-text {
+        -webkit-line-clamp: 1; }
+
+.yair-compact-mode .yair-privatemessage-container {
+  margin: 0;
+  box-shadow: unset; }
+
+/*****************
+*  CONFIG PANEL  *
+*****************/
+.yair-config {
+  background-color: #FFFFFF;
+  max-width: 800px;
+  min-height: 470px;
+  position: relative;
+  white-space: initial; }
+  .yair-config h2 {
+    text-align: center;
+    font-size: large;
+    padding: 8px;
+    background-color: #0DD3BB;
+    color: #FFFFFF; }
+  .yair-config h3 {
+    margin: 8px 0; }
+  .yair-config .yair-config-tabs {
+    display: flex;
+    text-align: center;
+    height: 30px;
+    border-bottom: 1px solid #EFEFED; }
+  .yair-config .yair-config-content-panel {
+    margin: 15px 20px; }
+    .yair-config .yair-config-content-panel .yair-checkbox, .yair-config .yair-config-content-panel #YAIRRefreshInterval {
+      margin-bottom: 4px;
+      margin-right: 10px; }
+  .yair-config .yair-config-tab {
+    flex: 1;
+    cursor: pointer;
+    padding-top: 7px;
+    font-weight: bold; }
+    .yair-config .yair-config-tab.yair-active-tab {
+      border-bottom: 4px solid #0DD3BB; }
+  .yair-config .yair-config-content {
+    display: none;
+    margin-bottom: 57px; }
+    .yair-config .yair-config-content.yair-active-tab {
+      display: block; }
+    .yair-config .yair-config-content > div {
+      margin-bottom: 10px; }
+  .yair-config .yair-config-footer {
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: right;
+    border-top: 1px solid #EFEFED;
+    padding-top: 8px; }
+  .yair-config button.yair-save-button,
+  .yair-config #YAIRResetInbox,
+  .yair-config #YAIRResetInboxToggle,
+  .yair-config #YAIRCancelResetInbox,
+  .yair-config #YAIRReindexMessages {
+    background-color: #0DD3BB;
+    border: unset;
+    padding: 5px;
+    color: #FFFFFF;
+    border-radius: 2px;
+    width: 100px; }
+  .yair-config button.yair-save-button {
+    margin-right: 8px; }
+  .yair-config button#YAIRResetInboxToggle,
+  .yair-config button#YAIRReindexMessages {
+    margin-bottom: 10px; }
+  .yair-config #YAIRConfirmReset {
+    margin: auto;
+    width: 260px;
+    padding: 50px; }
+    .yair-config #YAIRConfirmReset > p {
+      margin-bottom: 10px; }
+    .yair-config #YAIRConfirmReset button#YAIRCancelResetInbox {
+      margin-left: 55px; }
+
+/*****************
+* EDITOR OPTIONS *
+*****************/
+.ql-toolbar {
+  height: 40px; }
+
+.ql-editor.ql-blank::before {
+  margin-top: 5px; }
+
+/*# sourceMappingURL=ui.css.map */

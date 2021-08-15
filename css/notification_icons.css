@@ -1,0 +1,160 @@
+#mail,
+#mailCount,
+#mail+.message-count,
+#tb-mail,
+#tb-mailCount {
+	display: none !important;
+}
+
+.yair-mail,
+.yair-privatemessages {
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 10px;
+	overflow: hidden;
+	position: relative;
+	display: inline-block;
+	text-indent: -9999px;
+	line-height: 8px;
+	text-decoration: none;
+	top: 2px
+}
+
+.yair-privatemessages-newredit, .yair-privatemessages-newredit-newmail {
+	width: 16px;
+	height: 16px;
+	overflow: hidden;
+	position: relative;
+	display: inline-block;
+	text-decoration: none;
+	padding: 8px;
+	margin-left: 8px;
+}
+
+.yair-privatemessages-newredit-newmail {
+	fill: #45ADA4; 
+}
+
+.count_badge {
+	font-family: "Noto Sans", Arial, sans-serif;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    font-size: 8px;
+    font-weight: bold;
+    height: 12px;
+    left: 18px;
+    line-height: 12px;
+    min-width: 12px;
+    position: absolute;
+    text-align: center;
+    top: 2px;
+    vertical-align: middle;
+    z-index: 1;
+    background: rgb(255, 69, 0);
+    border-radius: 12px;
+    padding: 0px 3px;
+}
+
+.yair-mail {
+	background-image: url("https://www.redditstatic.com/sprite-reddit.reNnXuo8_bA.png");
+	background-position: -99px -863px;
+	top: 2px;
+}
+
+.yair-mail.yair-havemail {
+	background-position-x: -78px;
+}
+
+.yair-privatemessages {
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUAgMAAAD5DFXkAAAAA3NCSVQICAjb4U/gAAAADFBMVEX///////+ZmZn/VwBo6xFqAAAABHRSTlMA////sy1AiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwOC8wNS8xNXOdnPsAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAAR0lEQVQImWPgWrWqgUE1NDSBYWpoaAQ6AZbgWhXVwMDAlMAAJIAM/v//DzCYhoYWMFwNDY1BJ8AS/P/jDzAwMBcAdTAfYAAA1EMdRbzUXMsAAAAASUVORK5CYII=");
+	background-position: 0px 0px;
+}
+
+.yair-privatemessages.yair-havemail {
+	background-position-y: -10px;
+}
+
+#header .yair-mail+.message-count,
+#header .yair-privatemessages+.message-count {
+	display: inline-block;
+}
+
+#header .yair-mail+.message-count:empty,
+#header .yair-privatemessages+.message-count:empty {
+	display: none;
+}
+
+#NREFloat .yair-privatemessages {
+	float: left;
+	top: 3px;
+	margin-right: 4px;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/icons.png");
+	background-position-x: -174px;
+	background-position-y: -1px;
+	width: 16px;
+	height: 16px;
+}
+
+#NREFloat .yair-mail {
+	float: left;
+	top: 3px;
+	background-image: url("chrome-extension://__MSG_@@extension_id__/images/icons.png");
+	background-position-x: -191px;
+	background-position-y: -1px;
+	width: 16px;
+	height: 16px;
+}
+
+/*Firefox Hack*/
+@media screen and (min--moz-device-pixel-ratio:0) {
+	#NREFloat .yair-privatemessages, #NREFloat .yair-mail { background: url("moz-extension://__MSG_@@extension_id__/images/icons.png"); } }
+
+
+#NREFloat .yair-havemail {
+	background-position-y: -20px !important;
+}
+
+#NREFloat #NREMailCount {
+	position: absolute;
+	margin-left: -24px;
+	margin-top: -15px;
+}
+
+#tb-toolbarcounters .yair-privatemessages {
+	top: 2px;
+}
+
+#tb-toolbarcounters .yair-mail {
+	top: 1px;
+	margin-left: 5px;
+}
+
+#tb-toolbarcounters .message-count {
+	display: inline;
+	background-color: transparent;
+	color: #369;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 11px;
+}
+
+#tb-toolbarcounters .message-count:before {
+	content: '[';
+}
+
+#tb-toolbarcounters .message-count:after {
+	content: ']';
+}
+
+#tb-toolbarcounters .message-count:empty:before {
+	content: '[0';
+}
+
+.res-floater-list .yair-privatemessages {
+	height: 6px;
+	top: 0;
+}
+
+.res-floater-list .yair-privatemessages.yair-havemail {
+	height: 9px;
+	top: 1px;
+}

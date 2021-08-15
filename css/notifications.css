@@ -1,0 +1,102 @@
+body {
+	overflow-x: hidden;
+	overflow-y: auto;
+	max-height: 350px;
+	margin: 2px 4px;
+	border-radius: 5px;
+	padding: 0;
+	color: #333;
+	font-family: verdana, arial, helvetica, sans-serif;
+}
+
+body.popup {
+	width: 400px;
+}
+
+#notifications {
+	font-size: 14px;
+}
+
+.notification {
+	border: transparent 1px solid;
+	padding: 5px;
+}
+
+.notification:hover {
+	background: #F7F7F7;
+	cursor: pointer;
+}
+
+#tagline {
+	font-size: 13px;
+	font-weight: bold;
+	font-style: normal;
+	margin-bottom: 5px;
+	margin-top: 0;
+}
+
+.date {
+	font-size: 10px;
+	float: right;
+	color: #A4A4A4;
+	padding-top: 2px;
+}
+
+.no-notifications {
+	padding: 5px;
+}
+
+.subjectLine #truncate {
+	letter-spacing: normal;
+	font-style: normal;
+}
+
+.no-notifications h4 {
+	text-align: center;
+	font-weight: normal;
+	color: silver;
+}
+
+#control {
+	background-color: #0DD3BB;
+	padding: 2px;
+	height: 26px;
+	text-align: center;
+}
+
+#control p {
+    float: left;
+    font-size: 14;
+    font-weight: bold;
+    color: white;
+    margin: 4px;
+	cursor: default;
+}
+
+#control .forceRefresh {
+	float: right;
+}
+
+#control i {
+	cursor: pointer;
+}
+
+#control i.forceRefresh {
+    font-style: unset;
+	background-repeat: no-repeat;
+	width: 17px;
+	height: 17px;
+	margin: 4px;
+	background: url("chrome-extension://__MSG_@@extension_id__/images/sprites.png");
+
+}
+
+/*Firefox Hack*/
+@media screen and (min--moz-device-pixel-ratio:0) {
+	#control i.forceRefresh { background: url("moz-extension://__MSG_@@extension_id__/images/sprites.png"); } }
+
+
+.spin {
+	transition: all 1.5s ease;
+	transform: rotate(360deg);
+}

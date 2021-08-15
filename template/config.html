@@ -1,0 +1,102 @@
+<div class="yair-config yair-slide-in">
+	<h2>YAIR - Dashboard</h2>
+	<div class="yair-config-body">
+		<div class="yair-config-tabs">
+			<div class="yair-config-tab yair-active-tab" data-tab="settings">Settings</div>
+			<div class="yair-config-tab" data-tab="admin">Administration</div>
+			<div class="yair-config-tab" data-tab="about">About</div>
+		</div>
+		<div class="yair-config-content-panel">
+			<div class="yair-config-content yair-active-tab" data-tab-content="settings">
+				<div id="ModMail-config" class="yair-modmail">
+					<div class="yair-checkbox">
+						<input class="styled-checkbox" type="checkbox" id="YAIRShowModMail">
+						<label for="YAIRShowModMail">Show Modmail Separately</label>
+					</div>
+					<p class="yair-config-info">
+						Enabling this option displays modmail separately from your main inbox, with it's own folders.
+					</p>
+				</div>
+				<div id="CompactMode-config">
+					<div class="yair-checkbox">
+						<input class="styled-checkbox" type="checkbox" id="YAIRCompactMode">
+						<label for="YAIRCompactMode">Compact Mode</label>
+					</div>
+					<p class="yair-config-info">
+						Select this option to enable compact mode on the inbox. Selecting this option narrows the sidebar, and collapses the card containers.
+					</p>
+				</div>
+				<div id="NightMode-config">
+					<div class="yair-checkbox">
+						<input class="styled-checkbox" type="checkbox" id="YairNightMode">
+						<label for="YairNightMode">Night Mode</label>
+					</div>
+					<p class="yair-config-info">
+						Use YAIR's dark theme. YAIR supports Reddit Enhancement Suite's night mode, but if you'd prefer to turn on a dark interface seperate from that, or don't use RES, you can do so by selecting this option.
+					</p>
+				</div>
+				<div id="MessageOrder-config">
+					<div class="yair-checkbox">
+						<input class="styled-checkbox" type="checkbox" id="YAIRNewFirst">
+						<label for="YAIRNewFirst">New Messages First (Conversations)</label>
+					</div>
+					<p class="yair-config-info">
+						By default, messages in a conversation are sorted from old to new. Showing the first message at the top and the last message at the bottom. This option allows you to reverse the sorting so that messages are sorted from new to old inside a message thread.
+					</p>
+				</div>
+				<div id="RefreshInterval-config">
+					<select id="YAIRRefreshInterval">
+						<option value="30000">30 seconds</option>
+						<option value="60000">1 minute</option>
+						<option value="300000">5 minutes</option>
+						<option value="600000">10 minutes</option>
+						<option value="900000">15 minutes</option>
+						<option value="1800000">30 minutes</option>
+					</select>
+					<label for="YAIRRefreshInterval">Refresh Interval</label>
+					<p class="yair-config-info"> By default, new messages are polled for every minute to update notifications in the menu bar. This setting allows for changing that default.</p>
+					<p class="yair-config-info">If you switch usernames, this value will not be updated until you view your inbox.</p>
+				</div>
+			</div>
+			<div class="yair-config-content" data-tab-content="admin">
+				<div id="ResetInbox">
+					<button id="YAIRResetInboxToggle">Reset Inbox</button>
+					<p class="yair-config-info">
+						If something has gone wrong (somehow the data in your inbox has been corrupted), you can use this option to clear out your inbox and restart from scratch.
+					</p>
+					<br>
+					<p class="yair-config-info">
+						Do note however: Reddit normally will not store more than 1000 private messages. YAIR stores messages locally, and thus will store more than 1000 messages. If you have more than a thousand messages, using this option means that you will lose your oldest messages.
+					</p>
+					<div id="YAIRConfirmReset" class="yair-hide">
+						<p>Are you sure? This action can't be undone.</p>
+						<button id="YAIRResetInbox">Reset Inbox</button>
+						<button id="YAIRCancelResetInbox">Cancel</button>
+					</div>
+				</div>
+				<div id="reindexMessages">
+					<button id="YAIRReindexMessages">Reindex Inbox</button>
+					<p class="yair-config-info">
+						If messages you know you've gotten aren't showing up in your inbox, click this button to reindex all messages without resetting the inbox. This might take a long time if you have a lot of messages!
+					</p>
+				</div>
+				</div>
+			<div class="yair-config-content" data-tab-content="about">
+				<p>
+					YAIR was built by <a href="/u/adhesivecheese">/u/AdhesiveCheese</a>, building off the groundwork laid by Reddit Inbox Revamp and Reddit notifier. YAIR's design is inspired by first and foremost by RIR, but also Gmail and Reddit's Beta Modmail.
+				</p>
+				<h3>Feedback and Support</h3>
+				<p>
+					YAIR has a subreddit (<a href="/r/yair">/r/YAIR</a>) for providing feedback and getting support. Feeling shy? Feel free to PM the subreddit instead.
+				</p>
+				<h3>Developers</h3>
+				<p>
+					YAIR is an open source project, and the full source code can be found on <a href="https://github.com/adhesivecheese/YAIR">Github</a>. Please feel free to submit bug reports or pull requests!
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="yair-config-footer">
+		<button class="yair-save-button">Save changes</button>
+	</div>
+</div>

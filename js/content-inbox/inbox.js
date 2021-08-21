@@ -1008,42 +1008,70 @@
 			}
 		}
 		, searchMatchCheck: function (conversation) {
-			var searchObj = yair._get.searchObj;
-			if (searchObj.from && conversation.correspondent && searchObj.from.toLowerCase() === conversation.correspondent.toLowerCase()) {
-				return true;
-			}
-			if (searchObj.subject) {
+			
+			const fromCheck = function (targetFrom) {
+				if (typeof targetFrom !== 'string') {
+					if (targetFrom.length !== 1) {
+						return false;
+					}
+					else {
+						var newTargetFrom = targetFrom[0];
+					}
+				}
+				else {
+					var newTargetFrom = targetFrom;
+				}
+				return conversation.correspondent && (newTargetFrom.toLowerCase() === conversation.correspondent.toLowerCase());
+			};
+			const subjectCheck = function (targetSubject) {
 				var subject = conversation.subject.toLowerCase();
-				var terms = yair._get.searchObj.subject;
 				var termsFound = 0;
-				for (var j = 0; j < terms.length; j++) {
-					var term = terms[j].toLowerCase();
+				for (var j = 0; j < targetSubject.length; j++) {
+					var term = targetSubject[j].toLowerCase();
 					if (subject.indexOf(term) >= 0) {
 						termsFound++;
 					}
 				}
-				if (termsFound >= terms.length) {
+				if (termsFound >= targetSubject.length) {
 					return true;
 				}
-			}
-			if (searchObj.message) {
-				var terms = searchObj.subject;
+			};
+			const messageCheck = function (targetMessage) {
 				var termsFound = 0;
-				for (var j = 0; j < terms.length; j++) {
+				for (var j = 0; j < targetMessage.length; j++) {
+					var term = targetMessage[j].toLowerCase();
 					for (var k = 0; k < conversation.messages.length; k++) {
 						var message = conversation.messages[k].body.toLowerCase();
-						var term = terms[j].toLowerCase();
 						if (message.indexOf(term) >= 0) {
 							termsFound++;
 							break;
 						}
 					}
 				}
-				if (termsFound >= terms.length) {
+				if (termsFound >= targetMessage.length) {
 					return true;
 				}
+			};
+
+			const searchObj = yair._get.searchObj;
+			const functionMap = {
+				from: fromCheck,
+				subject: subjectCheck,
+				message: messageCheck
 			}
-			return false;
+			let anyTrue = false;
+
+			for (const [attr, func] of Object.entries(functionMap)) {
+				if (searchObj[attr] && !func(searchObj[attr]))
+					return false;
+				if (!anyTrue && searchObj['any'] && func(searchObj['any']))
+					anyTrue = true;
+			}
+
+			if (searchObj['any'] && !anyTrue)
+				return false;
+			else
+				return true;
 		}
 		, cloneAndSortConversations: function (conversations, oldToNew) {
 			if (typeof oldToNew === "undefined") {

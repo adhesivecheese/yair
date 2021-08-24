@@ -1,6 +1,6 @@
 {
 	"manifest_version":2,
-	"name":"YAIR",
+	"name":"YAIR - Local Testing",
 	"version":"0.3.3",
 	"description":"Revamps the Reddit inbox",
 	"icons":{
@@ -62,6 +62,7 @@
 				"js/content-inbox/dbhelper.js",
 				"js/content-inbox/quill.min.js",
 				"js/content-inbox/turndown.min.js",
+				"js/content-inbox/luxon.min.js",
 				"js/notifications/fetch.js",
 				"js/notifications/moment-2.24.0.min.js"
 			],

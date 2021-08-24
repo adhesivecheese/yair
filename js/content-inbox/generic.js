@@ -114,7 +114,8 @@ function parseSearchQuery(str) {
 	let operators = {
 		from: null,
 		subject: null,
-		message: null
+		message: null,
+		when: null
 	};
 	anyString = '';
 
@@ -143,6 +144,7 @@ function parseSearchQuery(str) {
 
 	operators.subject = !operators.subject ? null : splitAndTrim(operators.subject);
 	operators.message = !operators.message ? null : splitAndTrim(operators.message);
+	operators.when = !operators.when ? null : operators.when.split('-');
 	operators.any = splitAndTrim(anyString);
 
 	return operators;

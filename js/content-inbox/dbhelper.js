@@ -173,16 +173,24 @@
 					id: obj.first_message_name
 					, modmail: false
 					, subject: ''
+					, first_author: obj.author
 					, last_author: obj.author
 					, messages: []
+					, messageDateTimes: []
 					, text: obj.body
 					, 'new': false
+					, first_created: obj.created_utc
 					, last_update: obj.created_utc
 				};
 			}
 			var conversation = conversations[obj.first_message_name];
 			conversation.messages.push(obj);
+			conversation.messageDateTimes.push(luxon.DateTime.fromSeconds(obj.created_utc));
 			conversation.subject = obj.subject;
+			if (obj.created_utc < conversation.first_created) {
+				conversation.first_created = obj.created_utc;
+				conversation.first_author = obj.author;
+			}
 			if (obj.created_utc > conversation.last_update) {
 				conversation.last_update = obj.created_utc;
 				conversation.last_author = obj.author;

@@ -1052,12 +1052,28 @@
 					return true;
 				}
 			};
+			const whenCheck = function (targetWhen) {
+				let targetDtList = targetWhen.map( dt => !dt ? undefined : luxon.DateTime.fromFormat(dt, "MM/dd/yyyy") );
+
+				if (!targetDtList || targetDtList.length > 2 || targetDtList.some( dt => dt && dt.invalid ))
+					return false
+				
+				let [ targetDateTimeStart, targetDateTimeEnd ] = targetDtList;
+
+				if (targetDateTimeEnd === undefined)
+					return conversation.messageDateTimes.some( d => d.hasSame(targetDateTimeStart, 'day') )
+				else if (targetDateTimeStart !== undefined)
+					return conversation.messageDateTimes.some( d => (d >= targetDateTimeStart || d.hasSame(targetDateTimeStart, 'day')) && (d <= targetDateTimeEnd || d.hasSame(targetDateTimeEnd, 'day')) )
+				else
+					return false
+			};
 
 			const searchObj = yair._get.searchObj;
 			const functionMap = {
 				from: fromCheck,
 				subject: subjectCheck,
-				message: messageCheck
+				message: messageCheck,
+				when: whenCheck
 			}
 			let anyTrue = false;
 
@@ -1069,9 +1085,9 @@
 			}
 
 			if (searchObj['any'] && !anyTrue)
-				return false;
+				return false
 			else
-				return true;
+				return true
 		}
 		, cloneAndSortConversations: function (conversations, oldToNew) {
 			if (typeof oldToNew === "undefined") {

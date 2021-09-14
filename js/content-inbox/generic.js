@@ -109,28 +109,45 @@ function parseQueryString(str) {
 }
 
 function parseSearchQuery(str) {
-	str = decodeURIComponent(str);
-	var obj = {
-		from: null
-		, subject: null
-		, message: null
+	query = decodeURIComponent(str).trim();
+
+	let operators = {
+		from: null,
+		subject: null,
+		message: null,
+		when: null
 	};
-	if (str.length > 5 && str.substring(0, 5) === "from:") {
-		obj.from = str.substring(5);
-		return obj;
+	anyString = '';
+
+	for (let i = 0; i < query.length; i++) {
+		let isOp = false;
+		for (const [key, val] of Object.entries(operators)) {
+			opStart = i + key.length + 1;
+			if (val === null && query.slice(i, opStart) === `${key}:`) {
+				isOp = true;
+				opEnd = (
+					(query[opStart] === '"' && query.indexOf('"', opStart + 1) !== -1)
+					? query.indexOf('"', opStart + 1)
+					: (query.indexOf(' ', opStart + 1) !== -1)
+					? query.indexOf(' ', opStart + 1)
+					: query.length
+					);
+				operators[key] = query[opStart] === '"' ? query.slice(opStart + 1, opEnd) : query.slice(opStart, opEnd);
+				i = opEnd;
+			}
+		}
+		if (!isOp)
+			anyString += query[i]
 	}
-	if (str.length > 8 && str.substring(0, 8) === "subject:") {
-		obj.subject = str.substring(8).split(' ');
-		return obj;
-	}
-	if (str.length > 8 && str.substring(0, 8) === "message:") {
-		obj.message = str.substring(8).split(' ');
-		return obj;
-	}
-	obj.from = str;
-	obj.subject = str.split(' ');
-	obj.message = str.split(' ');
-	return obj;
+
+	splitAndTrim = s => s.split(' ').filter( word => !!word.trim() );
+
+	operators.subject = !operators.subject ? null : splitAndTrim(operators.subject);
+	operators.message = !operators.message ? null : splitAndTrim(operators.message);
+	operators.when = !operators.when ? null : operators.when.split('-');
+	operators.any = splitAndTrim(anyString);
+
+	return operators;
 }
 
 function getTime() {
